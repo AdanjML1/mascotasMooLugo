@@ -12,6 +12,8 @@ class Mascota extends Model
 
     public $timestamps=false;
 
+    public $with=['propietario','raza','especie'];
+
     public $fillable=[
     	'id_mascota',
     	'id_especie',
@@ -22,6 +24,18 @@ class Mascota extends Model
     	'peso',
     	'genero'
     ];
+    public function propietario()
+    {
+        return $this -> belongsTo(Propietario::class,'id_propietario','id_propietario');
+    }
+    public function raza()
+    {
+        return $this -> belongsTo(Raza::class,'id_raza','id_raza');
+    }
+    public function especie()
+    {
+        return $this -> belongsTo(Especie::class,'id_especie','id_especie');
+    }
 
 
 }
